@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:40:09 by omalovic          #+#    #+#             */
-/*   Updated: 2024/10/10 18:37:17 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:28:20 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char *str = "01234";
 
-	char *substr = ft_substr(str, 10, 10);
+	char *substr = ft_substr(str, 2, 3);
 	printf("%s\n", substr);
 } */

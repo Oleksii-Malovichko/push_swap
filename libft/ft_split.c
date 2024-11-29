@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:31:27 by omalovic          #+#    #+#             */
-/*   Updated: 2024/10/21 16:16:28 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:48:05 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-/* int main() {
-    const char *str = "xxxxxxxxhello!zzzzzzz";
-    char delimiter = 'z';
+int main() {
+    const char *str = "1 2 3 -5 9 акг";
+    char delimiter = ' ';
     char **result = ft_split(str, delimiter);
 	if (result) {
         int i = 0;
@@ -120,4 +120,4 @@ char	**ft_split(char const *s, char c)
             i++;
         }
     }
-} */
+}

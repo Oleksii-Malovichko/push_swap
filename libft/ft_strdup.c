@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:24:13 by omalovic          #+#    #+#             */
-/*   Updated: 2024/10/09 15:02:41 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:28:41 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ char	*ft_strdup(const char *s1)
 	return (s2);
 }
 
-/* int main()
+int main()
 {
 	const char *s1 = "Hello, Alex!";
 	char *s2 = ft_strdup(s1);
 	printf("%s\n", s2);
-} */
+}
