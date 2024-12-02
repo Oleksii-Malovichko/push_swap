@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:56:16 by alex              #+#    #+#             */
-/*   Updated: 2024/11/30 13:26:19 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/02 16:07:32 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int	ft_atoi(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
+		if (num > INT_MAX)
+		{
+			if (sign == 1)
+				return (INT_MAX);
+			else
+				return (INT_MIN);
+		}
 		i++;
 	}
 	return ((int)(num * sign));
@@ -50,40 +57,46 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*get_num(char *args)
+char	*get_num(char *args, int *i_end)
 {
-	int	i_start;
-	static int i_end = 0;
+	int		i_start;
 	char	*temp;
 
-	if (i_end >= ft_strlen(args))
+	if (*i_end >= ft_strlen(args))
 	{
-		i_end = 0;
+		*i_end = 0;
 		return (NULL);
 	}
-	i_start = i_end;
+	i_start = *i_end;
 	while (args[i_start] == ' ' || (args[i_start] >= 9 && args[i_start] <= 13))
 		i_start++;
-	i_end = i_start;
-	while ((args[i_end] >= '0' && args[i_end] <= '9') || args[i_end] == '-')
-		(i_end)++;
-	temp = ft_strncpy(args, i_start, i_end);
-	if (!temp)
-		exit(EXIT_FAILURE);
-	return (temp);
+	*i_end = i_start;
+	while ((args[*i_end] >= '0' && args[*i_end] <= '9') || args[*i_end] == '-')
+		(*i_end)++;
+	if (*i_end > i_start)
+	{
+		temp = ft_strncpy(args, i_start, *i_end);
+		if (!temp)
+			exit(EXIT_FAILURE);
+		return (temp);
+	}
+	return (NULL);
 }
 
 int	get_len_stack(char *args)
 {
 	char	*temp;
 	int		len;
+	int		i_end;
 
+	i_end = 0;
 	len = 0;
-	temp = get_num(args);
+	temp = get_num(args, &i_end);
 	while (temp)
 	{
 		len++;
-		temp = get_num(args);
+		free(temp);
+		temp = get_num(args, &i_end);
 	}
 	return (len);
 }
@@ -92,20 +105,27 @@ int	get_nums(int **stack_a, char *args)
 {
 	char	*temp;
 	int		len;
-
+	int		i_end;
+	
 	len = get_len_stack(args);
 	*stack_a = malloc(sizeof(int) * (len));
 	if (!*stack_a)
+	{
+		printf("Memory error1\n");
 		return (ft_error_exit());
+	}
 	len = 0;
-	temp = get_num(args);
+	temp = get_num(args, &i_end);
 	if (!temp)
+	{
+		printf("Memory error1\n");
 		return (ft_error_exit());
+	}
 	while (temp)
 	{
 		(*stack_a)[len] = ft_atoi(temp);
 		free(temp);
-		temp = get_num(args);
+		temp = get_num(args, &i_end);
 		len++;
 	}
 	return (len);
@@ -144,22 +164,23 @@ int check_chars(char *nums)
 	return (1);
 }
 
-
 char	*ft_strncpy(char *args, int i_start, int i_end)
 {
 	char	*temp;
-	int	i;
+	int		i;
 
-	i = 0;
+	if (i_end <= i_start)
+		return (NULL);
 	temp = malloc(sizeof(char) * ((i_end - i_start) + 1));
 	if (!temp)
 		return (NULL);
+	i = 0;
 	while (i_start < i_end)
 	{
 		temp[i] = args[i_start];
 		i++;
 		i_start++;
 	}
-	temp[i_start] = '\0';
+	temp[i] = '\0';
 	return (temp);
 }

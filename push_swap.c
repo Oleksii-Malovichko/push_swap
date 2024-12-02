@@ -6,18 +6,11 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/02 14:07:28 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/02 16:08:06 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// int	ft_error_exit(void)
-// {
-// 	write(1, "Error\n", 6);
-// 	exit(EXIT_FAILURE);
-// 	return (1); 
-// }
 
 int	ft_error(void)
 {
@@ -109,14 +102,23 @@ int main(int n, char **args)
 
 	temp = args[1];
 	if (n == 1)
+	{
+		printf("Only one arg\n");
 		return (ft_error());
+	}
 	if (n > 2)
 		temp = ft_myjoin(n, args);
 	if (!check_chars(temp))
+	{
+		printf("smth wrong with chars\n");
 		return (ft_error());
+	}
 	stack_a_len = get_nums(&stack_a, temp);
 	if (!check_duplicates(stack_a, stack_a_len))
+	{
+		printf("Duplicates!\n");
 		return (ft_error());
+	}
 	for (int i = 0; i < stack_a_len; i++)
 		printf("%d\n", stack_a[i]);
 }
