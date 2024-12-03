@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:56:16 by alex              #+#    #+#             */
-/*   Updated: 2024/12/02 16:07:32 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/02 16:48:58 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	get_nums(int **stack_a, char *args)
 	int		len;
 	int		i_end;
 	
+	i_end = 0;
 	len = get_len_stack(args);
 	*stack_a = malloc(sizeof(int) * (len));
 	if (!*stack_a)
@@ -118,7 +119,7 @@ int	get_nums(int **stack_a, char *args)
 	temp = get_num(args, &i_end);
 	if (!temp)
 	{
-		printf("Memory error1\n");
+		printf("Memory error2\n");
 		return (ft_error_exit());
 	}
 	while (temp)

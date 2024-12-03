@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/02 16:08:06 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/03 16:45:10 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,21 @@
 
 int	ft_error(void)
 {
-	write(1, "Error\n", 6);
+	write(1, "PError\n", 7);
+	return (1);
+}
+
+int	is_sorted(int	*stack_a, int stack_a_len)
+{
+	int	i;
+
+	i = 0;
+	while (i < (stack_a_len - 1))
+	{
+		if (stack_a[i] > stack_a[i + 1])
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
@@ -100,6 +114,9 @@ int main(int n, char **args)
 	char		*temp;
 	int	stack_a_len;
 
+	int	stack_b_len;
+
+	stack_b_len = 0;
 	temp = args[1];
 	if (n == 1)
 	{
@@ -119,6 +136,14 @@ int main(int n, char **args)
 		printf("Duplicates!\n");
 		return (ft_error());
 	}
-	for (int i = 0; i < stack_a_len; i++)
-		printf("%d\n", stack_a[i]);
+	if (!is_sorted(stack_a, stack_a_len))
+	{
+		// sort_selection(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
+		quick_sort(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
+		print_a(stack_a, stack_a_len);
+	}
+	else
+	{
+		print_a(stack_a, stack_a_len);
+	}
 }
