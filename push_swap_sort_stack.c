@@ -6,7 +6,7 @@
 /*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:12 by alex              #+#    #+#             */
-/*   Updated: 2024/12/04 13:28:36 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:07:13 by omalovic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,13 @@ void	sort_selection(int **stack_a, int *stack_a_len, int **stack_b, int *stack_b
 // 			else
 // 			{
 // 				rotate_a(*stack_a, *stack_a_len);
+// 				i++;
 // 			}
-// 			i++;
 // 		}
 // 	}
-// 	sort_three(stack_a, stack_a_len);
+// 	print_a(*stack_a, *stack_a_len);
+// 	print_b(*stack_b, *stack_b_len);
+// 	// sort_three(stack_a, stack_a_len);
 // 	while (*stack_b_len > 0)
 // 	{
 // 		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
