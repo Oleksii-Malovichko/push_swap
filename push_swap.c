@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/03 16:45:10 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/04 13:28:58 by omalovic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,8 @@ int main(int n, char **args)
 	}
 	if (!is_sorted(stack_a, stack_a_len))
 	{
-		// sort_selection(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
-		quick_sort(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
+		sort_selection(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
+		// quick_sort(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
 		print_a(stack_a, stack_a_len);
 	}
 	else
