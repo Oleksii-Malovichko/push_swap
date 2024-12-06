@@ -6,17 +6,11 @@
 /*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/04 18:24:17 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/06 15:02:39 by omalovic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_error(void)
-{
-	write(1, "PError\n", 7);
-	return (1);
-}
 
 int	is_sorted(int	*stack_a, int stack_a_len)
 {
@@ -82,11 +76,11 @@ char	*get_items(int n, char **args, char *result)
 
 char	*ft_myjoin(int n, char **args)
 {
-	int	counter;
-	int	q_elem;
-	int	q_ch;
+	int		counter;
+	int		q_elem;
+	int		q_ch;
 	char	*result;
-	
+
 	counter = 0;
 	q_elem = 1;
 	while (q_elem < n)
@@ -107,43 +101,27 @@ char	*ft_myjoin(int n, char **args)
 	return (get_items(n, args, result));
 }
 
-int main(int n, char **args)
+int	main(int n, char **args)
 {
-	static int	*stack_a = NULL;
-	static int	*stack_b = NULL;
-	char		*temp;
-	int	stack_a_len;
+	int		*stack_a;
+	int		*stack_b;
+	char	*temp;
+	int		stack_a_len;
+	int		stack_b_len;
 
-	int	stack_b_len;
-
+	stack_a = NULL;
+	stack_b = NULL;
 	stack_b_len = 0;
 	temp = args[1];
 	if (n == 1)
-	{
-		printf("Only one arg\n");
-		return (ft_error());
-	}
+		return (1);
 	if (n > 2)
 		temp = ft_myjoin(n, args);
 	if (!check_chars(temp))
-	{
-		printf("smth wrong with chars\n");
 		return (ft_error());
-	}
 	stack_a_len = get_nums(&stack_a, temp);
 	if (!check_duplicates(stack_a, stack_a_len))
-	{
-		printf("Duplicates!\n");
 		return (ft_error());
-	}
 	if (!is_sorted(stack_a, stack_a_len))
-	{
-		// sort_selection(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
-		quick_sort(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
-		print_a(stack_a, stack_a_len);
-	}
-	else
-	{
-		print_a(stack_a, stack_a_len);
-	}
+		divide_four(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
 }
