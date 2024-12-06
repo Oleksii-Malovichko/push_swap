@@ -6,7 +6,7 @@ C_FLAGS = -Wall -Wextra -Werror
 
 OBJS_DIR = objs
 SRCS_L = ft_printf/funcs.c ft_printf/ft_printf.c ft_printf/process_string.c ft_printf/process_string2.c ft_printf/funcs2.c
-SRCS = push_swap.c push_swap_operations1.c push_swap_operations2.c push_swap_operations3.c push_swap_utils.c push_swap_sort_stack.c push_swap_utils2.c
+SRCS = push_swap.c push_swap_operations1.c push_swap_operations2.c push_swap_operations3.c push_swap_utils.c push_swap_utils2.c push_swap_sort_stack.c push_swap_sort_stack2.c push_swap_sort_stack3.c
 
 OBJS_L = $(SRCS_L:%.c=%.o)
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)

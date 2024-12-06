@@ -6,7 +6,7 @@
 /*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:57 by alex              #+#    #+#             */
-/*   Updated: 2024/12/06 15:03:00 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:34:17 by omalovic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,22 @@ void	reverse_rotate_a(int *stack_a, int stack_a_len);
 void	reverse_rotate_b(int *stack_b, int stack_b_len);
 void	reverse_rotate_rr(int *stack_a, int stack_a_len,
 			int *stack_b, int stack_b_len);
-void	sort_selection(int **stack_a, int *stack_a_len, int flag);
+void	sort_selection(int **stack_a, int *stack_a_len);
 int		is_sorted(int	*stack_a, int stack_a_len);
 void	get_item(int	**stack_a, int *stack_a_len, int index);
 void	divide_sort(int **stack_a, int *stack_a_len,
 			int **stack_b, int *stack_b_len);
 void	divide_four(int **stack_a, int *stack_a_len,
 			int **stack_b, int *stack_b_len);
+void	sort_selection(int **stack_a, int *stack_a_len);
+void	sort_selection_reverse(int **stack_a, int *stack_a_len);
+int		*ft_strcpy(int *stack_a, int stack_a_len);
 
 #endif
+/* 
+afelger_next_line	dreule_printf		jwardeng_printf
+algebert_libft		eebert_minitalk		lbohm_fdf
+aroth_libft		eshokhov_libft		lihrig_get_next_line
+bebuber_cpp2		itsiros_printf		obehavka_next_line
+dkremer_cpp01		jisokim2_printf		push_swap_radix
+dolifero_cpp5		julcalde_get_next_line */
