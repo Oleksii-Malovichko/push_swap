@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_operations1.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 13:36:08 by alex              #+#    #+#             */
-/*   Updated: 2024/12/06 15:57:10 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:55:47 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,28 +61,26 @@ void	reverse_rotate_rr(int *stack_a, int stack_a_len,
 	reverse_rotate_b(stack_b, stack_b_len);
 }
 
-void	get_item(int **stack_a, int *stack_a_len, int index)
+void	get_item(int **stack_a, int *stack_a_len, int smallest_index)
 {
 	int	i;
-	int	got_item;
 
-	if (index >= *stack_a_len)
+	if (smallest_index >= *stack_a_len)
 		ft_error_exit();
-	got_item = (*stack_a)[index];
-	if (index < (*stack_a_len / 2))
+	if (smallest_index < (*stack_a_len / 2))
 	{
-		while (index > 0)
+		while (smallest_index > 0)
 		{
-			if (index == 1)
+			if (smallest_index == 1)
 				return (swap_a(stack_a, *stack_a_len));
 			rotate_a(*stack_a, *stack_a_len);
-			index--;
+			smallest_index--;
 		}
 	}
 	else
 	{
 		i = (*stack_a_len) - 1;
-		while (i >= index)
+		while (i >= smallest_index)
 		{
 			reverse_rotate_a(*stack_a, *stack_a_len);
 			i--;
@@ -90,17 +88,17 @@ void	get_item(int **stack_a, int *stack_a_len, int index)
 	}
 }
 
-void	print_a(int *stack_a, int stack_a_len)
-{
-	printf("Stack_a:\n");
-	for (int i = 0; i < stack_a_len; i++)
-		printf("%d ", (stack_a)[i]);
-	printf("\n");
-}
-void	print_b(int *stack_a, int stack_a_len)
-{
-	printf("Stack_b:\n");
-	for (int i = 0; i < stack_a_len; i++)
-		printf("%d ", (stack_a)[i]);
-	printf("\n");
-}
+// void	print_a(int *stack_a, int stack_a_len)
+// {
+// 	printf("Stack_a:\n");
+// 	for (int i = 0; i < stack_a_len; i++)
+// 		printf("%d ", (stack_a)[i]);
+// 	printf("\n");
+// }
+// void	print_b(int *stack_a, int stack_a_len)
+// {
+// 	printf("Stack_b:\n");
+// 	for (int i = 0; i < stack_a_len; i++)
+// 		printf("%d ", (stack_a)[i]);
+// 	printf("\n");
+// }

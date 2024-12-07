@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:57 by alex              #+#    #+#             */
-/*   Updated: 2024/12/06 16:34:17 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:54:48 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
+void	swap(int *a, int *b);
+void	free_stacks(int **stack_a, int **stack_b);
 char	**ft_split(char const *s, char c);
 int		ft_error(void);
 int		ft_atoi(char *str);

@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_stack.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:12 by alex              #+#    #+#             */
-/*   Updated: 2024/12/06 16:32:05 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:29:32 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	swap(int *a, int *b)
-{
-	int	temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
 
 int	find_pivot(int *stack_a, int stack_a_len)
 {
@@ -94,16 +85,29 @@ void	divide_sort_reverse(int **stack_a, int *stack_a_len,
 		push_b(stack_b, stack_b_len, stack_a, stack_a_len);
 }
 
-void	divide_four(int **stack_a, int *stack_a_len,
+void	transition_to_dividing(int **stack_a, int *stack_a_len,
 			int **stack_b, int *stack_b_len)
 {
-	int	pivot;
-	int	i;
 	int	*helper;
 	int	helper_len;
 
 	helper = NULL;
 	helper_len = 0;
+	divide_sort(stack_a, stack_a_len, &helper, &helper_len);
+	free(helper);
+	helper = NULL;
+	helper_len = 0;
+	divide_sort_reverse(stack_b, stack_b_len, &helper, &helper_len);
+	while (helper_len > 0)
+		push_a(stack_a, stack_a_len, &helper, &helper_len);
+}
+
+void	divide_four(int **stack_a, int *stack_a_len,
+			int **stack_b, int *stack_b_len)
+{
+	int	pivot;
+	int	i;
+
 	if (*stack_a_len < 10)
 		return (sort_selection(stack_a, stack_a_len));
 	pivot = find_pivot(*stack_a, *stack_a_len);
@@ -118,13 +122,7 @@ void	divide_four(int **stack_a, int *stack_a_len,
 			i++;
 		}
 	}
-	divide_sort(stack_a, stack_a_len, &helper, &helper_len);
-	free(helper);
-	helper = NULL;
-	helper_len = 0;
-	divide_sort_reverse(stack_b, stack_b_len, &helper, &helper_len);
-	while (helper_len > 0)
-		push_a(stack_a, stack_a_len, &helper, &helper_len);
+	transition_to_dividing(stack_a, stack_a_len, stack_b, stack_b_len);
 	print_a(*stack_a, *stack_a_len);
 	printf("is sorted: %d\n", is_sorted(*stack_a, *stack_a_len));
 }

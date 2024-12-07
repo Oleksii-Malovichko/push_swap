@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/06 15:02:39 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:55:21 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,16 @@ int	main(int n, char **args)
 	int		stack_a_len;
 	int		stack_b_len;
 
+	if (n == 1)
+		return (1);
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_b_len = 0;
-	temp = args[1];
-	if (n == 1)
-		return (1);
 	if (n > 2)
 		temp = ft_myjoin(n, args);
+	temp = args[1];
+	if (!temp)
+		return (ft_error());
 	if (!check_chars(temp))
 		return (ft_error());
 	stack_a_len = get_nums(&stack_a, temp);
@@ -124,4 +126,6 @@ int	main(int n, char **args)
 		return (ft_error());
 	if (!is_sorted(stack_a, stack_a_len))
 		divide_four(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
+	free_stacks(&stack_a, &stack_b);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_stack3.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:22:40 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/06 16:32:09 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:54:59 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,27 @@ int	*ft_strcpy(int *stack_a, int stack_a_len)
 		i++;
 	}
 	return (copy);
+}
+
+void	swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	free_stacks(int **stack_a, int **stack_b)
+{
+	if (*stack_a != NULL)
+	{
+		free(*stack_a);
+		*stack_a = NULL;
+	}
+	if (*stack_b != NULL)
+	{
+		free(*stack_b);
+		*stack_b = NULL;
+	}
 }
