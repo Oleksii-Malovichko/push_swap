@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:57 by alex              #+#    #+#             */
-/*   Updated: 2024/12/07 14:54:48 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/07 16:17:02 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,3 @@ void	sort_selection_reverse(int **stack_a, int *stack_a_len);
 int		*ft_strcpy(int *stack_a, int stack_a_len);
 
 #endif
-/* 
-afelger_next_line	dreule_printf		jwardeng_printf
-algebert_libft		eebert_minitalk		lbohm_fdf
-aroth_libft		eshokhov_libft		lihrig_get_next_line
-bebuber_cpp2		itsiros_printf		obehavka_next_line
-dkremer_cpp01		jisokim2_printf		push_swap_radix
-dolifero_cpp5		julcalde_get_next_line */

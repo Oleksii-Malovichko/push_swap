@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:12 by alex              #+#    #+#             */
-/*   Updated: 2024/12/07 14:29:32 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/07 15:04:36 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	divide_four(int **stack_a, int *stack_a_len,
 		}
 	}
 	transition_to_dividing(stack_a, stack_a_len, stack_b, stack_b_len);
-	print_a(*stack_a, *stack_a_len);
-	printf("is sorted: %d\n", is_sorted(*stack_a, *stack_a_len));
 }
+
+// print_a(*stack_a, *stack_a_len);
+// printf("is sorted: %d\n", is_sorted(*stack_a, *stack_a_len));
