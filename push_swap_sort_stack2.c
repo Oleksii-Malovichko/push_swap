@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_stack2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:21:55 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/06 16:29:28 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:21:44 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,19 @@ int	find_biggest(int *stack_a, int stack_a_len)
 	return (biggest_index);
 }
 
-void	sort_selection(int **stack_a, int *stack_a_len)
+void	sort_selection(int **stack_a, int *stack_a_len, int **stack_b, int *stack_b_len)
 {
 	int	smallest_index;
-	int	*stack_b;
-	int	stack_b_len;
 
-	stack_b = NULL;
-	stack_b_len = 0;
 	while (*stack_a_len > 3)
 	{
 		smallest_index = find_smallest(*stack_a, *stack_a_len);
 		get_item(stack_a, stack_a_len, smallest_index);
-		push_b(&stack_b, &stack_b_len, stack_a, stack_a_len);
+		push_b(stack_b, stack_b_len, stack_a, stack_a_len);
 	}
 	sort_three(stack_a, stack_a_len);
-	while (stack_b_len > 0)
-		push_a(stack_a, stack_a_len, &stack_b, &stack_b_len);
-	free(stack_b);
+	while (*stack_b_len > 0)
+		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
 }
 
 void	sort_selection_reverse(int **stack_a, int *stack_a_len)

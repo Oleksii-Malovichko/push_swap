@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:22:40 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/07 14:54:59 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/09 22:29:51 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	swap(int *a, int *b)
 	*b = temp;
 }
 
-void	free_stacks(int **stack_a, int **stack_b)
+void	free_stacks(int **stack_a, int **stack_b, char **temp)
 {
 	if (*stack_a != NULL)
 	{
@@ -46,6 +46,11 @@ void	free_stacks(int **stack_a, int **stack_b)
 		*stack_a = NULL;
 	}
 	if (*stack_b != NULL)
+	{
+		free(*stack_b);
+		*stack_b = NULL;
+	}
+	if (*temp != NULL)
 	{
 		free(*stack_b);
 		*stack_b = NULL;

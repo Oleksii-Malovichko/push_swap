@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/07 15:05:19 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/09 22:33:28 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,17 +115,18 @@ int	main(int n, char **args)
 	stack_b = NULL;
 	stack_b_len = 0;
 	if (n == 2)
-		temp = args[1];
+		temp = ft_strdup(args[1]);
 	if (n > 2)
 		temp = ft_myjoin(n, args);
 	if (!temp)
-		return (ft_error());
+		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
 	if (!check_chars(temp))
-		return (ft_error());
-	stack_a_len = get_nums(&stack_a, temp);
+		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
+	stack_a_len = get_nums(&stack_a, &temp);
 	if (!check_duplicates(stack_a, stack_a_len))
-		return (ft_error());
+		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
 	if (!is_sorted(stack_a, stack_a_len))
-		divide_four(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
-	free_stacks(&stack_a, &stack_b);
+		sort_selection(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
+	print_a(stack_a, stack_a_len);
+	return (just_free(&stack_a, &stack_b, &temp), 0);
 }

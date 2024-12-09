@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 13:39:14 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/09 13:39:25 by omalovic         ###   ########.fr       */
+/*   Created: 2024/12/09 20:29:51 by alex              #+#    #+#             */
+/*   Updated: 2024/12/09 22:32:19 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,14 @@ char	*ft_strdup(const char *s1)
 	}
 	s2[i] = '\0';
 	return (s2);
+}
+
+void	just_free(int **stack_a, int **stack_b, char **temp)
+{
+	free(*stack_a);
+	*stack_a = NULL;
+	free(*stack_b);
+	*stack_b = NULL;
+	free(*temp);
+	*temp = NULL;
 }

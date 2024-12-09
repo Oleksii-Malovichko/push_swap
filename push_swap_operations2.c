@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_operations2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:22:01 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/06 14:23:20 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:26:39 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ int	*pop_item(int **stack_a, int stack_a_len)
 	int	i;
 	int	*temp;
 
+	if (stack_a_len <= 0 || !stack_a || !(*stack_a))
+		return (NULL);
 	temp = malloc(sizeof(int) * (stack_a_len - 1));
 	if (!temp)
-		ft_error_exit();
+		return (free(*stack_a), *stack_a = NULL, ft_error(), NULL);
 	i = 0;
 	while (i < (stack_a_len - 1))
 	{
@@ -67,3 +69,4 @@ int	*pop_item(int **stack_a, int stack_a_len)
 	*stack_a = NULL;
 	return (temp);
 }
+// pop_item push_a transition_to_dividing divide_four main

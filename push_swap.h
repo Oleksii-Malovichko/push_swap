@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:57 by alex              #+#    #+#             */
-/*   Updated: 2024/12/07 16:17:02 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/09 22:31:32 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
+char	*ft_strdup(const char *s1);
 void	swap(int *a, int *b);
-void	free_stacks(int **stack_a, int **stack_b);
+void	free_stacks(int **stack_a, int **stack_b, char **temp);
 char	**ft_split(char const *s, char c);
 int		ft_error(void);
 int		ft_atoi(char *str);
 int		ft_error_exit(void);
-int		get_nums(int **stack_a, char *args);
+int		get_nums(int **stack_a, char **args);
 int		check_chars(char *nums);
 char	*ft_strncpy(char *args, int i_start, int i_end);
 void	swap_a(int **stack_a, int stack_a_len);
@@ -48,15 +49,16 @@ void	reverse_rotate_a(int *stack_a, int stack_a_len);
 void	reverse_rotate_b(int *stack_b, int stack_b_len);
 void	reverse_rotate_rr(int *stack_a, int stack_a_len,
 			int *stack_b, int stack_b_len);
-void	sort_selection(int **stack_a, int *stack_a_len);
 int		is_sorted(int	*stack_a, int stack_a_len);
 void	get_item(int	**stack_a, int *stack_a_len, int index);
 void	divide_sort(int **stack_a, int *stack_a_len,
 			int **stack_b, int *stack_b_len);
 void	divide_four(int **stack_a, int *stack_a_len,
 			int **stack_b, int *stack_b_len);
-void	sort_selection(int **stack_a, int *stack_a_len);
+void	sort_selection(int **stack_a, int *stack_a_len, int **stack_b, int *stack_b_len);
 void	sort_selection_reverse(int **stack_a, int *stack_a_len);
 int		*ft_strcpy(int *stack_a, int stack_a_len);
+void	radix_sort(int **stack_a, int *stack_a_len, int **stack_b, int *stack_b_len);
+void	just_free(int **stack_a, int **stack_b, char **temp);
 
 #endif

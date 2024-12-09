@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 13:36:08 by alex              #+#    #+#             */
-/*   Updated: 2024/12/07 15:04:48 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/09 21:42:12 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ void	get_item(int **stack_a, int *stack_a_len, int smallest_index)
 	}
 }
 
-// void	print_a(int *stack_a, int stack_a_len)
-// {
-// 	printf("Stack_a:\n");
-// 	for (int i = 0; i < stack_a_len; i++)
-// 		printf("%d ", (stack_a)[i]);
-// 	printf("\n");
-// }
-// void	print_b(int *stack_a, int stack_a_len)
-// {
-// 	printf("Stack_b:\n");
-// 	for (int i = 0; i < stack_a_len; i++)
-// 		printf("%d ", (stack_a)[i]);
-// 	printf("\n");
-// }
+void	print_a(int *stack_a, int stack_a_len)
+{
+	printf("Stack_a:\n");
+	for (int i = 0; i < stack_a_len; i++)
+		printf("%d ", (stack_a)[i]);
+	printf("\n");
+}
+void	print_b(int *stack_a, int stack_a_len)
+{
+	printf("Stack_b:\n");
+	for (int i = 0; i < stack_a_len; i++)
+		printf("%d ", (stack_a)[i]);
+	printf("\n");
+}

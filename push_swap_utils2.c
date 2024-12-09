@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:53:11 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/06 14:53:43 by omalovic         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:26:46 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,26 +96,26 @@ int	get_len_stack(char *args)
 	return (len);
 }
 
-int	get_nums(int **stack_a, char *args)
+int	get_nums(int **stack_a, char **args)
 {
 	char	*temp;
 	int		len;
 	int		i_end;
 
 	i_end = 0;
-	len = get_len_stack(args);
+	len = get_len_stack(*args);
 	*stack_a = malloc(sizeof(int) * (len));
 	if (!*stack_a)
 		return (ft_error_exit());
 	len = 0;
-	temp = get_num(args, &i_end);
+	temp = get_num(*args, &i_end);
 	if (!temp)
 		return (ft_error_exit());
 	while (temp)
 	{
 		(*stack_a)[len] = ft_atoi(temp);
 		free(temp);
-		temp = get_num(args, &i_end);
+		temp = get_num(*args, &i_end);
 		len++;
 	}
 	return (len);
