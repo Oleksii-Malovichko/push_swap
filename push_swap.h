@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:57 by alex              #+#    #+#             */
-/*   Updated: 2024/12/09 22:31:32 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/11 19:42:50 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
+void	divide_stack(int **stack_a, int *stack_a_len,
+			int **stack_b, int *stack_b_len);
 char	*ft_strdup(const char *s1);
 void	swap(int *a, int *b);
 void	free_stacks(int **stack_a, int **stack_b, char **temp);
@@ -51,14 +53,13 @@ void	reverse_rotate_rr(int *stack_a, int stack_a_len,
 			int *stack_b, int stack_b_len);
 int		is_sorted(int	*stack_a, int stack_a_len);
 void	get_item(int	**stack_a, int *stack_a_len, int index);
-void	divide_sort(int **stack_a, int *stack_a_len,
+void	sort_selection(int **stack_a, int *stack_a_len,
 			int **stack_b, int *stack_b_len);
-void	divide_four(int **stack_a, int *stack_a_len,
+void	sort_selection_reverse(int **stack_a, int *stack_a_len,
 			int **stack_b, int *stack_b_len);
-void	sort_selection(int **stack_a, int *stack_a_len, int **stack_b, int *stack_b_len);
-void	sort_selection_reverse(int **stack_a, int *stack_a_len);
 int		*ft_strcpy(int *stack_a, int stack_a_len);
-void	radix_sort(int **stack_a, int *stack_a_len, int **stack_b, int *stack_b_len);
 void	just_free(int **stack_a, int **stack_b, char **temp);
+int		find_smallest(int *stack_a, int stack_a_len);
+int		find_biggest(int *stack_a, int stack_a_len);
 
 #endif

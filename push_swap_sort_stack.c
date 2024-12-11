@@ -6,124 +6,118 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:12 by alex              #+#    #+#             */
-/*   Updated: 2024/12/09 22:06:09 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/11 19:44:45 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	find_pivot(int *stack_a, int stack_a_len)
-// {
-// 	int	*copy;
-// 	int	i;
-// 	int	j;
-// 	int	pivot;
+void	sort_three(int **stack_a, int *stack_a_len)
+{
+	if ((*stack_a)[0] > (*stack_a)[1] && (*stack_a)[0] > (*stack_a)[2])
+		rotate_a(*stack_a, *stack_a_len);
+	else if ((*stack_a)[1] > (*stack_a)[2] && (*stack_a)[1] > (*stack_a)[0])
+		reverse_rotate_a(*stack_a, *stack_a_len);
+	if ((*stack_a)[0] > (*stack_a)[1])
+		swap_a(stack_a, *stack_a_len);
+}
 
-// 	i = 0;
-// 	copy = ft_strcpy(stack_a, stack_a_len);
-// 	while (i < stack_a_len - 1)
-// 	{
-// 		j = i + 1;
-// 		while (j < stack_a_len)
-// 		{
-// 			if (copy[i] > copy[j])
-// 				swap(&copy[i], &copy[j]);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	pivot = copy[stack_a_len / 2];
-// 	free(copy);
-// 	return (pivot);
-// }
+void	sort_selection_reverse(int **stack_a, int *stack_a_len,
+			int **stack_b, int *stack_b_len)
+{
+	int	biggest_index;
+	int	pushed_b;
 
-// void	divide_sort(int **stack_a, int *stack_a_len,
-// 			int **stack_b, int *stack_b_len)
-// {
-// 	int	pivot;
-// 	int	i;
+	pushed_b = 0;
+	while (*stack_a_len > 0)
+	{
+		biggest_index = find_biggest(*stack_a, *stack_a_len);
+		get_item(stack_a, stack_a_len, biggest_index);
+		push_b(stack_b, stack_b_len, stack_a, stack_a_len);
+		pushed_b++;
+	}
+	while (*stack_b_len > 0)
+	{
+		if (pushed_b == 0)
+			break ;
+		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
+		pushed_b--;
+	}
+}
 
-// 	pivot = find_pivot(*stack_a, *stack_a_len);
-// 	i = 0;
-// 	while (i < *stack_a_len)
-// 	{
-// 		if (pivot > (*stack_a)[0])
-// 			push_b(stack_b, stack_b_len, stack_a, stack_a_len);
-// 		else
-// 		{
-// 			rotate_a(*stack_a, *stack_a_len);
-// 			i++;
-// 		}
-// 	}
-// 	sort_selection(stack_a, stack_a_len);
-// 	sort_selection_reverse(stack_b, stack_b_len);
-// 	while (*stack_b_len > 0)
-// 		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
-// }
+void	sort_selection(int **stack_a, int *stack_a_len,
+			int **stack_b, int *stack_b_len)
+{
+	int	smallest_index;
+	int	pushed_b;
 
-// void	divide_sort_reverse(int **stack_a, int *stack_a_len,
-// 			int **stack_b, int *stack_b_len)
-// {
-// 	int	pivot;
-// 	int	i;
+	pushed_b = 0;
+	smallest_index = find_smallest(*stack_a, *stack_a_len);
+	while (*stack_a_len > 3)
+	{
+		smallest_index = find_smallest(*stack_a, *stack_a_len);
+		get_item(stack_a, stack_a_len, smallest_index);
+		push_b(stack_b, stack_b_len, stack_a, stack_a_len);
+		pushed_b++;
+	}
+	sort_three(stack_a, stack_a_len);
+	while (*stack_b_len > 0)
+	{
+		if (pushed_b == 0)
+			break ;
+		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
+		pushed_b--;
+	}
+}
 
-// 	pivot = find_pivot(*stack_a, *stack_a_len);
-// 	i = 0;
-// 	while (i < *stack_a_len)
-// 	{
-// 		if (pivot > (*stack_a)[0])
-// 			push_b(stack_b, stack_b_len, stack_a, stack_a_len);
-// 		else
-// 		{
-// 			rotate_a(*stack_a, *stack_a_len);
-// 			i++;
-// 		}
-// 	}
-// 	sort_selection(stack_a, stack_a_len);
-// 	sort_selection_reverse(stack_b, stack_b_len);
-// 	while (*stack_a_len > 0)
-// 		push_b(stack_b, stack_b_len, stack_a, stack_a_len);
-// }
+int	find_pivot(int *stack_a, int stack_a_len)
+{
+	int	*copy;
+	int	i;
+	int	j;
+	int	pivot;
 
-// void	transition_to_dividing(int **stack_a, int *stack_a_len,
-// 			int **stack_b, int *stack_b_len)
-// {
-// 	int	*helper;
-// 	int	helper_len;
+	i = 0;
+	copy = ft_strcpy(stack_a, stack_a_len);
+	while (i < stack_a_len - 1)
+	{
+		j = i + 1;
+		while (j < stack_a_len)
+		{
+			if (copy[i] > copy[j])
+				swap(&copy[i], &copy[j]);
+			j++;
+		}
+		i++;
+	}
+	pivot = copy[stack_a_len / 2];
+	free(copy);
+	return (pivot);
+}
 
-// 	helper = NULL;
-// 	helper_len = 0;
-// 	divide_sort(stack_a, stack_a_len, &helper, &helper_len);
-// 	free(helper);
-// 	helper = NULL;
-// 	helper_len = 0;
-// 	divide_sort_reverse(stack_b, stack_b_len, &helper, &helper_len);
-// 	while (helper_len > 0)
-// 		push_a(stack_a, stack_a_len, &helper, &helper_len);
-// }
+void	divide_stack(int **stack_a, int *stack_a_len,
+			int **stack_b, int *stack_b_len)
+{
+	int	i;
+	int	pivot;
 
-// void	divide_four(int **stack_a, int *stack_a_len,
-// 			int **stack_b, int *stack_b_len)
-// {
-// 	int	pivot;
-// 	int	i;
-
-// 	if (*stack_a_len < 10)
-// 		return (sort_selection(stack_a, stack_a_len));
-// 	pivot = find_pivot(*stack_a, *stack_a_len);
-// 	i = 0;
-// 	while (i < *stack_a_len)
-// 	{
-// 		if (pivot > (*stack_a)[0])
-// 			push_b(stack_b, stack_b_len, stack_a, stack_a_len);
-// 		else
-// 		{
-// 			rotate_a(*stack_a, *stack_a_len);
-// 			i++;
-// 		}
-// 	}
-// 	transition_to_dividing(stack_a, stack_a_len, stack_b, stack_b_len);
-// }
+	pivot = find_pivot(*stack_a, *stack_a_len);
+	i = 0;
+	while (i < *stack_a_len)
+	{
+		if (pivot > (*stack_a)[0])
+			push_b(stack_b, stack_b_len, stack_a, stack_a_len);
+		else
+		{
+			rotate_a(*stack_a, *stack_a_len);
+			i++;
+		}
+	}
+	sort_selection(stack_a, stack_a_len, stack_b, stack_b_len);
+	sort_selection_reverse(stack_b, stack_b_len, stack_a, stack_a_len);
+	while (*stack_b_len > 0)
+		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
+}
 
 // print_a(*stack_a, *stack_a_len);
-// printf("is sorted: %d\n", is_sorted(*stack_a, *stack_a_len));
+// printf("sorted: %d\n", is_sorted(*stack_a, *stack_a_len));

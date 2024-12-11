@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/09 22:33:28 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/11 19:09:35 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int	main(int n, char **args)
 	if (!check_duplicates(stack_a, stack_a_len))
 		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
 	if (!is_sorted(stack_a, stack_a_len))
-		sort_selection(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
-	print_a(stack_a, stack_a_len);
+		divide_stack(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
 	return (just_free(&stack_a, &stack_b, &temp), 0);
 }

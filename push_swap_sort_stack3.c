@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:22:40 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/09 22:29:51 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/11 19:42:24 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,46 @@ void	free_stacks(int **stack_a, int **stack_b, char **temp)
 		free(*stack_b);
 		*stack_b = NULL;
 	}
+}
+
+int	find_smallest(int *stack_a, int stack_a_len)
+{
+	int	smallest;
+	int	smallest_index;
+	int	i;
+
+	i = 1;
+	smallest = stack_a[0];
+	smallest_index = 0;
+	while (i < stack_a_len)
+	{
+		if (smallest > stack_a[i])
+		{
+			smallest = stack_a[i];
+			smallest_index = i;
+		}
+		i++;
+	}
+	return (smallest_index);
+}
+
+int	find_biggest(int *stack_a, int stack_a_len)
+{
+	int	biggest;
+	int	biggest_index;
+	int	i;
+
+	i = 1;
+	biggest = stack_a[0];
+	biggest_index = 0;
+	while (i < stack_a_len)
+	{
+		if (biggest < stack_a[i])
+		{
+			biggest = stack_a[i];
+			biggest_index = i;
+		}
+		i++;
+	}
+	return (biggest_index);
 }
