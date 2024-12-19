@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:35 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/19 03:13:48 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,10 @@ int	main(int n, char **args)
 	if (!temp)
 		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
 	if (!check_chars(temp))
-		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
+		return (just_free(&stack_a, &stack_b, &temp), ft_error());
 	stack_a_len = get_nums(&stack_a, &temp);
 	if (!check_duplicates(stack_a, stack_a_len))
-		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
+		return (just_free(&stack_a, &stack_b, &temp), ft_error());
 	if (!is_sorted(stack_a, stack_a_len))
 		divide_stack(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
 	return (just_free(&stack_a, &stack_b, &temp), 0);

@@ -6,13 +6,13 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:53:11 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/09 22:26:46 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/19 03:11:18 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, int *flag)
 {
 	unsigned long		num;
 	int					sign;
@@ -32,9 +32,9 @@ int	ft_atoi(char *str)
 	{
 		num = num * 10 + (str[i] - '0');
 		if (num > 2147483647 && sign == 1)
-			return (ft_error_exit());
+			return (*flag = 1, 0);
 		if (num > 2147483648 && sign == -1)
-			return (ft_error_exit());
+			return (*flag = 1, 0);
 		i++;
 	}
 	return ((int)(num * sign));
@@ -101,7 +101,9 @@ int	get_nums(int **stack_a, char **args)
 	char	*temp;
 	int		len;
 	int		i_end;
+	int		flag_to_clean;
 
+	flag_to_clean = 0;
 	i_end = 0;
 	len = get_len_stack(*args);
 	*stack_a = malloc(sizeof(int) * (len));
@@ -110,10 +112,12 @@ int	get_nums(int **stack_a, char **args)
 	len = 0;
 	temp = get_num(*args, &i_end);
 	if (!temp)
-		return (ft_error_exit());
+		return (free(*stack_a), free(*args), free(temp), ft_error_exit());
 	while (temp)
 	{
-		(*stack_a)[len] = ft_atoi(temp);
+		(*stack_a)[len] = ft_atoi(temp, &flag_to_clean);
+		if (flag_to_clean == 1)
+			return (free(*stack_a), free(*args), free(temp), ft_error_exit());
 		free(temp);
 		temp = get_num(*args, &i_end);
 		len++;

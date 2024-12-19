@@ -6,13 +6,13 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:22:40 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/11 19:42:24 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/19 03:33:54 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*ft_strcpy(int *stack_a, int stack_a_len)
+int	*ft_strcpy(const int *stack_a, int stack_a_len)
 {
 	int	*copy;
 	int	i;

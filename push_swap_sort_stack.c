@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:12 by alex              #+#    #+#             */
-/*   Updated: 2024/12/11 19:44:45 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/19 04:43:30 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	sort_selection_reverse(int **stack_a, int *stack_a_len,
 	while (*stack_a_len > 0)
 	{
 		biggest_index = find_biggest(*stack_a, *stack_a_len);
-		get_item(stack_a, stack_a_len, biggest_index);
-		push_b(stack_b, stack_b_len, stack_a, stack_a_len);
+		get_item2(stack_a, stack_a_len, biggest_index);
+		push_a(stack_b, stack_b_len, stack_a, stack_a_len);
 		pushed_b++;
 	}
 	while (*stack_b_len > 0)
 	{
 		if (pushed_b == 0)
 			break ;
-		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
+		push_b(stack_a, stack_a_len, stack_b, stack_b_len);
 		pushed_b--;
 	}
 }
@@ -56,7 +56,7 @@ void	sort_selection(int **stack_a, int *stack_a_len,
 	while (*stack_a_len > 3)
 	{
 		smallest_index = find_smallest(*stack_a, *stack_a_len);
-		get_item(stack_a, stack_a_len, smallest_index);
+		get_item1(stack_a, stack_a_len, smallest_index);
 		push_b(stack_b, stack_b_len, stack_a, stack_a_len);
 		pushed_b++;
 	}
@@ -70,7 +70,7 @@ void	sort_selection(int **stack_a, int *stack_a_len,
 	}
 }
 
-int	find_pivot(int *stack_a, int stack_a_len)
+int	find_pivot(const int *stack_a, int stack_a_len)
 {
 	int	*copy;
 	int	i;
@@ -117,7 +117,7 @@ void	divide_stack(int **stack_a, int *stack_a_len,
 	sort_selection_reverse(stack_b, stack_b_len, stack_a, stack_a_len);
 	while (*stack_b_len > 0)
 		push_a(stack_a, stack_a_len, stack_b, stack_b_len);
-}
 
-// print_a(*stack_a, *stack_a_len);
-// printf("sorted: %d\n", is_sorted(*stack_a, *stack_a_len));
+	// print_a(*stack_a, *stack_a_len);
+	// printf("sorted: %d\n", is_sorted(*stack_a, *stack_a_len));
+}
