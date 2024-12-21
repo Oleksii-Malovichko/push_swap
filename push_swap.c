@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:48 by alex              #+#    #+#             */
-/*   Updated: 2024/12/19 03:13:48 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/21 03:24:33 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,31 +101,31 @@ char	*ft_myjoin(int n, char **args)
 	return (get_items(n, args, result));
 }
 
-int	main(int n, char **args)
-{
-	int		*stack_a;
-	int		*stack_b;
-	char	*temp;
-	int		stack_a_len;
-	int		stack_b_len;
+// int	main(int n, char **args)
+// {
+// 	int		*stack_a;
+// 	int		*stack_b;
+// 	char	*temp;
+// 	int		stack_a_len;
+// 	int		stack_b_len;
 
-	if (n == 1)
-		return (1);
-	stack_a = NULL;
-	stack_b = NULL;
-	stack_b_len = 0;
-	if (n == 2)
-		temp = ft_strdup(args[1]);
-	if (n > 2)
-		temp = ft_myjoin(n, args);
-	if (!temp)
-		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
-	if (!check_chars(temp))
-		return (just_free(&stack_a, &stack_b, &temp), ft_error());
-	stack_a_len = get_nums(&stack_a, &temp);
-	if (!check_duplicates(stack_a, stack_a_len))
-		return (just_free(&stack_a, &stack_b, &temp), ft_error());
-	if (!is_sorted(stack_a, stack_a_len))
-		divide_stack(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
-	return (just_free(&stack_a, &stack_b, &temp), 0);
-}
+// 	if (n == 1)
+// 		return (1);
+// 	stack_a = NULL;
+// 	stack_b = NULL;
+// 	stack_b_len = 0;
+// 	if (n == 2)
+// 		temp = ft_strdup(args[1]);
+// 	if (n > 2)
+// 		temp = ft_myjoin(n, args);
+// 	if (!temp)
+// 		return (free_stacks(&stack_a, &stack_b, &temp), ft_error());
+// 	if (!check_chars(temp))
+// 		return (just_free(&stack_a, &stack_b, &temp), ft_error());
+// 	stack_a_len = get_nums(&stack_a, &temp);
+// 	if (!check_duplicates(stack_a, stack_a_len))
+// 		return (just_free(&stack_a, &stack_b, &temp), ft_error());
+// 	if (!is_sorted(stack_a, stack_a_len))
+// 		divide_stack(&stack_a, &stack_a_len, &stack_b, &stack_b_len);
+// 	return (just_free(&stack_a, &stack_b, &temp), 0);
+// }

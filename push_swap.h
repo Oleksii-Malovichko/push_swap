@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:50:57 by alex              #+#    #+#             */
-/*   Updated: 2024/12/19 04:40:18 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/21 03:51:34 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,15 @@ int		*ft_strcpy(const int *stack_a, int stack_a_len);
 void	just_free(int **stack_a, int **stack_b, char **temp);
 int		find_smallest(int *stack_a, int stack_a_len);
 int		find_biggest(int *stack_a, int stack_a_len);
+char	*get_items(int n, char **args, char *result);
+char	*ft_myjoin(int n, char **args);
+int	ft_strlen(char *str);
+
+typedef struct s_mylist
+{
+	char *data;
+	s_mylist *next;
+} s_mylist;
+
 
 #endif
